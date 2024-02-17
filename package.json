@@ -1,5 +1,12 @@
 {
+  "name": "3d-dev-monorepo",
   "dependencies": {
     "mkdirp": "^1.0.4"
-  }
+  },
+  "private": false,
+  "version": "0.0.1",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
 }
