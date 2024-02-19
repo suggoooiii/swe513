@@ -42,7 +42,6 @@ export function Cyborg(props) {
 
   useFrame((state, delta) => {
     if (ref.current) {
-      console.log("🚀 ~ useFrame ~ ref.current:", ref.current);
       ref.current.uTime = state.clock.elapsedTime;
     }
     if (actions.Scene) {
@@ -360,6 +359,7 @@ export function Cyborg(props) {
                     <stripesShaderMaterial
                       ref={ref}
                       transparent
+                      side={THREE.DoubleSide}
                       uAlpha={stripesControls.alpha}
                       uMultiplier={stripesControls.multiplier}
                       uColorA={stripesControls.colorA}
