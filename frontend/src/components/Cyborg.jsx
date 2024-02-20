@@ -38,7 +38,8 @@ export function Cyborg(props) {
 
   useEffect(() => {
     console.log("🚀 ~ useEffect ~ materials:", materials);
-  }, []);
+    console.log("🚀 ~ useEffect ~ nodes:", nodes);
+  }, [materials]);
 
   useFrame((state, delta) => {
     if (ref.current) {
@@ -550,7 +551,7 @@ export function Cyborg(props) {
                     material={materials.Head}
                   />
                 </group>
-                <group
+                {/* <group
                   name="Mouth_low"
                   rotation={[-Math.PI / 2, 0, 0]}
                   scale={8.159}
@@ -560,8 +561,8 @@ export function Cyborg(props) {
                     geometry={nodes.Mouth_low_Head_0.geometry}
                     material={materials.Head}
                   />
-                </group>
-                <group
+                </group> */}
+                {/* <group
                   name="inside_low"
                   rotation={[-Math.PI / 2, 0, 0]}
                   scale={100}
@@ -571,7 +572,7 @@ export function Cyborg(props) {
                     geometry={nodes.inside_low_Head_0.geometry}
                     material={materials.Head}
                   />
-                </group>
+                </group> */}
               </group>
             </group>
           </group>
