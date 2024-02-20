@@ -97,7 +97,7 @@ export function Cyborg(props) {
               name={node.name}
               geometry={node.geometry}
               material={node.material}
-              visible={visibilityControls[key]}
+              visible={meshVisibility[key]}
             />
           );
         })}
