@@ -37,6 +37,7 @@ export function Cyborg(props) {
 
   // Get all the keys of the nodes object
   let keys = Object.keys(nodes);
+
   // Filter out the keys that correspond to meshes
   const meshKeys = keys.filter((key) => nodes[key] instanceof THREE.Mesh);
 
