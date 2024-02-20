@@ -10,7 +10,7 @@ Title: Astraía
 import React, { useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-export function Model(props) {
+export function RobotModel(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/robot.gltf')
   const { actions } = useAnimations(animations, group)
