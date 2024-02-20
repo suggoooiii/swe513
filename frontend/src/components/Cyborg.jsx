@@ -33,26 +33,41 @@ export function Cyborg(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/cyborg.gltf");
   const { actions } = useAnimations(animations, group);
-
   const ref = useRef();
 
-  useEffect(() => {
-    console.log("🚀 ~ useEffect ~ materials:", materials);
-    console.log("🚀 ~ useEffect ~ nodes:", nodes);
-  }, [materials]);
+  // Get all the keys of the nodes object
+  let keys = Object.keys(nodes);
+  // Filter out the keys that correspond to meshes
+  const meshKeys = keys.filter((key) => nodes[key] instanceof THREE.Mesh);
+
+  const meshControls = meshKeys.reduce((acc, key) => {
+    acc[key] = true; // default visibility to true
+    return acc;
+  }, {});
+  const { debug } = useControls({ debug: false });
+
+  // useEffect(() => console.log(debug), []);
 
   useFrame((state, delta) => {
     if (ref.current) {
       ref.current.uTime = state.clock.elapsedTime;
     }
-    if (actions.Scene) {
-      actions.Scene.play();
-      actions.Scene.setLoop(THREE.LoopOnce);
-      actions.Scene.clampWhenFinished = true;
-      actions.Scene.getClip().duration = 2;
-    }
+    // if (actions.Scene) {
+    //   actions.Scene.play();
+    //   actions.Scene.setLoop(THREE.LoopOnce);
+    //   actions.Scene.clampWhenFinished = true;
+    //   actions.Scene.getClip().duration = 2;
+    // }
     // group.current.rotation.y += delta / 2;
   });
+
+  const controls = keys.reduce((acc, key) => {
+    acc[key] = true; // default visibility to true
+    return acc;
+  }, {});
+
+  const visibilityControls = useControls("model", controls);
+  const meshVisibility = useControls("Mesh Visibility", meshControls);
 
   const stripesControls = useControls("stripes", {
     alpha: {
@@ -69,7 +84,30 @@ export function Cyborg(props) {
     colorB: "#FFFF00",
   });
 
-  return (
+  // const modelControls = useControls("model", {});
+
+  const DebugModel = () => {
+    return (
+      <group ref={group} {...props} dispose={null}>
+        {meshKeys.map((key) => {
+          const node = nodes[key];
+          return (
+            <mesh
+              key={key}
+              name={node.name}
+              geometry={node.geometry}
+              material={node.material}
+              visible={visibilityControls[key]}
+            />
+          );
+        })}
+      </group>
+    );
+  };
+
+  return debug ? (
+    <DebugModel />
+  ) : (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group
@@ -551,7 +589,7 @@ export function Cyborg(props) {
                     material={materials.Head}
                   />
                 </group>
-                {/* <group
+                <group
                   name="Mouth_low"
                   rotation={[-Math.PI / 2, 0, 0]}
                   scale={8.159}
@@ -561,8 +599,8 @@ export function Cyborg(props) {
                     geometry={nodes.Mouth_low_Head_0.geometry}
                     material={materials.Head}
                   />
-                </group> */}
-                {/* <group
+                </group>
+                <group
                   name="inside_low"
                   rotation={[-Math.PI / 2, 0, 0]}
                   scale={100}
@@ -572,7 +610,7 @@ export function Cyborg(props) {
                     geometry={nodes.inside_low_Head_0.geometry}
                     material={materials.Head}
                   />
-                </group> */}
+                </group>
               </group>
             </group>
           </group>

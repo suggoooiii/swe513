@@ -3,7 +3,7 @@ import { useControls } from "leva";
 
 export default function Lights() {
   const { sunPosition, rayleigh, distance, mieDirectionalG, mieCoefficient } =
-    useControls({
+    useControls("Lights", {
       sunPosition: {
         value: [100, 200, 100],
       },

@@ -12,6 +12,7 @@ function Experience() {
       <Center top>
         <Cyborg />
       </Center>
+
       <Floor />
       {/* <Environment preset="city" resolution={256} background blur={0.8} /> */}
     </>
