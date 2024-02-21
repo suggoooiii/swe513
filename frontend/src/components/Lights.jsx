@@ -2,51 +2,70 @@ import { Sky } from "@react-three/drei";
 import { useControls } from "leva";
 
 export default function Lights() {
-  const { sunPosition, rayleigh, distance, mieDirectionalG, mieCoefficient } =
-    useControls("Lights", {
-      sunPosition: {
-        value: [100, 200, 100],
-      },
-      rayleigh: {
-        value: 1,
-        min: 0,
-        max: 10,
-        step: 0.1,
-      },
-      distance: {
-        value: 1,
-        min: 0,
-        max: 1000,
-        step: 0.1,
-      },
-      mieDirectionalG: {
-        value: 1,
-        min: 0,
-        max: 10,
-        step: 0.1,
-      },
-      mieCoefficient: {
-        value: 0.05,
-        min: 0,
-        max: 10,
-        step: 0.1,
-      },
-    });
+  const {
+    sunPosition,
+    rayleigh,
+    distance,
+    mieDirectionalG,
+    mieCoefficient,
+    color,
+    groundColor,
+    lightPosition,
+  } = useControls("Lights", {
+    sunPosition: {
+      value: [100, 200, 100],
+    },
+    rayleigh: {
+      value: 1,
+      min: 0,
+      max: 10,
+      step: 0.1,
+    },
+    distance: {
+      value: 1,
+      min: 0,
+      max: 1000,
+      step: 0.1,
+    },
+    mieDirectionalG: {
+      value: 1,
+      min: 0,
+      max: 10,
+      step: 0.1,
+    },
+    mieCoefficient: {
+      value: 0.05,
+      min: 0,
+      max: 10,
+      step: 0.1,
+    },
+    color: {
+      value: "#ffffff",
+    },
+    groundColor: {
+      value: "#ffffff",
+    },
+    lightPosition: {
+      value: [0, 50, 0],
+    },
+  });
 
   return (
     <>
-      <Sky
+      <axesHelper args={[10]} />
+      {/* <Sky
         sunPosition={sunPosition}
         distance={distance}
         mieDirectionalG={mieDirectionalG}
         mieCoefficient={mieCoefficient}
         rayleigh={rayleigh}
-      />
+      /> */}
       <hemisphereLight
-        args={[0xffffff, 0xffffff, 1.0]}
-        color={0x7095c1}
-        position={[0, 50, 0]}
-        groundColor={0xcbc1b2}
+        // args={[0xffffff, 0xffffff, 1.0]}
+        color={color}
+        position={lightPosition}
+        groundColor={groundColor}
+        intensity={1}
       />
       <directionalLight
         position={[100, 200, 100]}

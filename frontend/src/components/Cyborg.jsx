@@ -85,8 +85,6 @@ export function Cyborg(props) {
     colorB: "#FFFF00",
   });
 
-  // const modelControls = useControls("model", {});
-
   const DebugModel = () => {
     return (
       <group ref={group} {...props} dispose={null}>
