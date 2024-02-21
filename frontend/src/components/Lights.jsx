@@ -52,16 +52,14 @@ export default function Lights() {
 
   return (
     <>
-      <axesHelper args={[10]} />
-      {/* <Sky
+      <Sky
         sunPosition={sunPosition}
         distance={distance}
         mieDirectionalG={mieDirectionalG}
         mieCoefficient={mieCoefficient}
         rayleigh={rayleigh}
-      /> */}
+      />
       <hemisphereLight
-        // args={[0xffffff, 0xffffff, 1.0]}
         color={color}
         position={lightPosition}
         groundColor={groundColor}

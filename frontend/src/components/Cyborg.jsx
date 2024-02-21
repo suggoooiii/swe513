@@ -13,6 +13,8 @@ import { useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
 import stripesVertex from "../glsl/stripes.vertex.glsl";
 import stripesFragment from "../glsl/stripes.fragment.glsl";
+import fogVertex from "../glsl/fog.vertex.glsl";
+import fogFragment from "../glsl/fog.fragment.glsl";
 import { useControls } from "leva";
 
 const StripesShaderMaterial = shaderMaterial(
@@ -26,8 +28,17 @@ const StripesShaderMaterial = shaderMaterial(
   stripesVertex,
   stripesFragment
 );
+const FogMaterial = shaderMaterial(
+  {
+    time: 0.0,
+    fogColor: new THREE.Color(0xffffff), // Example: white fog
+    ufogDensity: 0.05,
+  },
+  fogVertex,
+  fogFragment
+);
 
-extend({ StripesShaderMaterial });
+extend({ StripesShaderMaterial, FogMaterial });
 
 export function Cyborg(props) {
   const group = useRef();
