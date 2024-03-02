@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { folder, Leva, useControls } from "leva";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Buildings } from "./Buildings";
+import BackGround from "./BackGround";
 
 const createInstancedGeometry = (geometry) => {
   let instances = 800;
@@ -108,10 +109,10 @@ function Experience() {
 
   return (
     <mesh ref={ref}>
-      <fogExp2 ref={fogRef} attach="fog" density={Opts.Fog_density} />
       <Lights />
+      <BackGround />
       <Buildings />
-      <Floor />
+      {/* <Floor /> */}
     </mesh>
   );
 }

@@ -13,6 +13,7 @@
     "@react-three/drei": "^9.97.6",
     "@react-three/fiber": "^8.15.16",
     "@react-three/postprocessing": "^2.16.0",
+    "canvas-sketch-util": "^1.10.0",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "maath": "^0.10.7",
