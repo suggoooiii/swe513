@@ -105,7 +105,7 @@ function Experience() {
   return (
     <>
       <Lights />
-      <BackGround count={500} />
+      <BackGround count={1000} />
       <Buildings />
       <Floor />
     </>
