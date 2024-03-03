@@ -98,22 +98,17 @@ function Experience() {
     },
   });
 
-  useEffect(
-    () => console.log("🚀 ~ Experience ~ ref.current:", ref.current),
-    []
-  );
-
   useFrame((state, delta) => {});
   const ref = useRef();
   const fogRef = useRef();
 
   return (
-    <mesh ref={ref}>
+    <>
       <Lights />
-      <BackGround />
+      <BackGround count={500} />
       <Buildings />
-      {/* <Floor /> */}
-    </mesh>
+      <Floor />
+    </>
   );
 }
 
