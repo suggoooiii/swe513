@@ -35,10 +35,6 @@ export default function BackGround({ count }) {
           <InstancedParticles key={i} index={i} {...data} />
         ))}
       </Instances>
-      {/* <instancedMesh ref={mesh} args={[null, null, count]}> */}
-      {/* <dodecahedronGeometry args={[1, 2]} /> */}
-      {/* <meshPhongMaterial color="#050505" /> */}
-      {/* </instancedMesh> */}
     </>
   );
 }
@@ -51,9 +47,6 @@ const InstancedParticles = (props) => {
 
   let time = props.time;
 
-  useEffect(() => {
-    // console.log(ref.current);
-  }, []);
   useFrame((state) => {
     // Run through the randomized data to calculate some movement
 
@@ -80,8 +73,6 @@ const InstancedParticles = (props) => {
     ref.current.position.copy(dummy.position);
     ref.current.scale.copy(dummy.scale);
     ref.current.rotation.copy(dummy.rotation);
-    // ref.current.setMatrixAt(index, dummy.matrix);
-    // ref.current.instanceMatrix.needsUpdate = true;
   });
   return <Instance ref={ref} />;
 };

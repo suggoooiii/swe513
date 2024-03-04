@@ -10,13 +10,7 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <Canvas
-      linear
-      flat
-      legacy
-      dpr={1}
-      camera={{ fov: 100, position: [0, 0, 30] }}
-    >
+    <Canvas camera={{ fov: 100, position: [0, 0, 30] }}>
       <ambientLight intensity={0.01} />
       <pointLight distance={60} intensity={4} color="lightblue" />
       <spotLight
@@ -25,14 +19,14 @@ function App() {
         penumbra={1}
         color="red"
       />
-      <mesh>
+      {/* <mesh>
         <planeGeometry args={[1000, 1000]} />
         <meshStandardMaterial
           color="#00ffff"
           roughness={0.5}
           depthTest={false}
         />
-      </mesh>
+      </mesh> */}
       <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
       <Experience />
     </Canvas>
