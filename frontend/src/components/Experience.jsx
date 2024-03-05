@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { folder, Leva, useControls } from "leva";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Buildings } from "./Buildings";
-import BackGround from "./BackGround";
+import BackGround from "./ParticlesBackground";
 
 const createInstancedGeometry = (geometry) => {
   let instances = 800;
@@ -47,6 +47,7 @@ const createInstancedGeometry = (geometry) => {
   return instancedGeometry;
 };
 function Experience() {
+  // opts for fog comp
   const Opts = useControls({
     Fog: folder({
       Fog_enbled: {
@@ -98,7 +99,6 @@ function Experience() {
     },
   });
 
-  useFrame((state, delta) => {});
   const ref = useRef();
   const fogRef = useRef();
 

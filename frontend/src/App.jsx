@@ -5,17 +5,13 @@ import Experience from "./components/Experience";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { useControls } from "leva";
+import ModelShowcaseEnv from "./components/ModelShowcaseEnv";
 
 // eg for instancing meshes with r3f
-{
-  /* <Bvh firstHitOnly> */
-}
-{
-  /* <Shoes data={data} range={range} /> */
-}
-{
-  /* </Bvh> */
-}
+/* <Bvh firstHitOnly> */
+
+/* <Shoes data={data} range={range} /> */
+/* </Bvh> */
 
 // function Shoes({ data, range }) {
 //   const { nodes, materials } = useGLTF('/shoe.glb')
@@ -57,19 +53,9 @@ function App() {
       gl={{
         antialias: true,
       }}
-      camera={{ fov: 100, position: [0, 0, 30] }}
+      camera={{ position: [0, 0, 5] }}
     >
-      <ambientLight intensity={0.01} />
-      <pointLight distance={60} intensity={4} color="lightblue" />
-      <spotLight
-        intensity={1.5}
-        position={[0, 0, 2000]}
-        penumbra={1}
-        color="red"
-      />
-
-      <Experience />
-      <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
+      <ModelShowcaseEnv />
     </Canvas>
   );
 }

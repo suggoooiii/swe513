@@ -7,9 +7,6 @@ import { Instance, Instances } from "@react-three/drei";
 
 // eslint-disable-next-line react/prop-types
 export default function BackGround({ count }) {
-  const mesh = useRef();
-  const light = useRef();
-
   // Generate some random positions, speed factors and timings
   const particles = useMemo(() => {
     const temp = [];

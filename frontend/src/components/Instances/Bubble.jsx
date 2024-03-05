@@ -13,19 +13,7 @@ const particles = Array.from({ length: 150 }, () => ({
   zFactor: MathUtils.randFloatSpread(10),
 }));
 
-export default function App() {
-  return (
-    <Canvas camera={{ fov: 50, position: [0, 0, 20] }}>
-      <ambientLight intensity={1.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} castShadow />
-      <Bubbles />
-
-      <Environment preset="city" />
-    </Canvas>
-  );
-}
-
-function Bubbles() {
+export default function Bubbles() {
   const ref = useRef();
   useFrame(
     (state, delta) =>
