@@ -5,7 +5,6 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import React from "react";
-import { MeshBasicMaterial } from "three";
 
 export default function ModelShowcaseEnv() {
   return (
@@ -40,7 +39,7 @@ export default function ModelShowcaseEnv() {
       </group>
 
       {/*---- STARRT ENV ----*/}
-      <Environment background resolution={64}>
+      <Environment background resolution={64} blur={1}>
         <Striplight position={[10, 2, 0]} scale={[1, 3, 10]} />
         <Striplight position={[-10, 2, 0]} scale={[1, 3, 10]} />
         <mesh scale={100}>
