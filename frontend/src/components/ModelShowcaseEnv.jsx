@@ -5,6 +5,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import React from "react";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 export default function ModelShowcaseEnv() {
   return (
@@ -17,35 +18,40 @@ export default function ModelShowcaseEnv() {
       />
       <pointLight position={[10, 10, 5]} />
       <pointLight position={[-10, -10, -5]} />
-      <ambientLight intensity={0.4} />
+      <ambientLight intensity={0.8} />
+
+      {/*---- replace with the actual model here ----*/}
       <group position={[0, -1.5, 0]}>
         <Float
           position={[0, 2.15, 0]}
-          speed={2}
-          rotationIntensity={2}
-          floatIntensity={2}
+          speed={1}
+          rotationIntensity={3}
+          floatIntensity={3}
         >
-          {/*---- replace with the actual model here ----*/}
           <mesh castShadow receiveShadow>
             <torusKnotGeometry args={[1, 0.25, 256, 24, 1, 3]} />
             <meshStandardMaterial
-              color="white"
-              roughness={0.1}
+              color="blue"
+              emissive={"purple"}
+              emissiveIntensity={0.9}
               metalness={0.925}
+              roughness={0.1}
+              // wireframe
             />
           </mesh>
         </Float>
-        <ContactShadows scale={10} blur={3} opacity={0.25} far={10} />
+        {/* <ContactShadows scale={10} blur={3} opacity={0.25} far={10} smooth /> */}
       </group>
 
       {/*---- STARRT ENV ----*/}
-      <Environment background resolution={64} blur={1}>
+      <Environment resolution={128} blur={0.3}>
         <Striplight position={[10, 2, 0]} scale={[1, 3, 10]} />
         <Striplight position={[-10, 2, 0]} scale={[1, 3, 10]} />
+
+        {/*---- add the simulation frag here ----*/}
         <mesh scale={100}>
-          {/*---- add the simulation frag here ----*/}
           <sphereGeometry args={[1, 64, 64]} />
-          <meshBasicMaterial color={"pink"} />
+          <meshBasicMaterial color={"hotpink"} />
         </mesh>
       </Environment>
     </>
