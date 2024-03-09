@@ -9,6 +9,8 @@ const arr = new Array(800).fill(0).map((_, i) => {
     MathUtils.randFloat(2, 10),
     MathUtils.randFloat(0.1, 0.5),
   ];
+
+
   const size = 100;
   const pos = new Vector3().random().multiplyScalar(size);
   pos.x -= size / 2;
