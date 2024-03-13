@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useRef } from "react";
 import { Leva, useControls } from "leva";
 import ModelShowcaseEnv from "./components/ModelShowcaseEnv";
-import { Buildings } from "./components/Buildings";
+import { Stats, StatsGl } from "@react-three/drei";
 
 function App() {
   const ref = useRef();
@@ -12,23 +12,24 @@ function App() {
   }, []);
   return (
     <>
-      <Leva collapsed />
+      <Leva isRoot titleBar={{ title: "Leva" }} />
       <Canvas
         gl={{
           outputColorSpace: "srgb-linear",
+          autoClear: true,
+          autoClearColor: true,
+          autoClearDepth: true,
           logarithmicDepthBuffer: true,
-          antialias: false,
-          alpha: false,
-          powerPreference: "high-performance",
-          stencil: false,
-          
+          // antialias: true,
         }}
         camera={{ position: [0, 0, 15] }}
       >
-        <color args={["black"]} attach="background" />
-        <fog attach="fog" args={["black", 15, 20]} />
+        {/* <color args={["black"]} attach="background" /> */}
+        {/* <fog attach="fog" args={["black", 15, 20]} /> */}
 
         <ModelShowcaseEnv />
+        <Stats />
+        <StatsGl gpuPanel={true} />
       </Canvas>
     </>
   );

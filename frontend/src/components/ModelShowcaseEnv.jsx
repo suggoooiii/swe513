@@ -26,9 +26,9 @@ function Ground() {
     >
       {(Material, props) => (
         <Material
-          color="#a0a0a0"
+          color="#6e0876"
           metalness={0.4}
-          roughness={0.1}
+          roughness={0.8}
           roughnessMap={floor}
           normalMap={normal}
           normalScale={[2, 2]}
@@ -47,12 +47,10 @@ export default function ModelShowcaseEnv() {
         minPolarAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 2}
         enablePan={false}
+        autoRotateSpeed={1}
       />
-      <pointLight position={[10, 10, 5]} />
-      <pointLight position={[-10, -10, -5]} />
-      <ambientLight intensity={0.8} />
 
-      {/*---- replace with the actual model here ----*/}
+      {/*---- replace with the actual MODEL here ----*/}
       <group position={[0, -1.5, 0]}>
         <Float
           position={[0, 2.15, 0]}
@@ -72,75 +70,76 @@ export default function ModelShowcaseEnv() {
           </mesh>
         </Float>
         <Ground />
-        {/* <ContactShadows scale={10} blur={2} opacity={0.5} far={10} smooth /> */}
+        <ContactShadows scale={10} blur={2} opacity={0.5} far={10} smooth />
       </group>
 
       {/*---- STARRT ENV ----*/}
-      <Environment background resolution={512} blur={0.4}>
+      <Environment frames={60} background resolution={512} blur={0.01}>
         {/* Ceiling */}
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, -9]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, -6]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, -3]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, 0]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, 3]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, 6]}
           scale={[10, 1, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-x={Math.PI / 2}
           position={[0, 4, 9]}
           scale={[10, 1, 1]}
         />
         {/* Sides */}
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-y={Math.PI / 2}
           position={[-50, 2, 0]}
           scale={[100, 2, 1]}
         />
         <Lightformer
-          intensity={2}
+          intensity={3}
           rotation-y={-Math.PI / 2}
           position={[50, 2, 0]}
           scale={[100, 2, 1]}
         />
         {/* Key */}
         <Lightformer
-          form="circle"
-          color="red"
-          intensity={2}
-          scale={10}
-          position={[10, 5, 10]}
+          form="ring"
+          color="purple"
+          intensity={3}
+          position={[20, 20, 20]}
+          scale={7}
           onUpdate={(self) => self.lookAt(0, 0, 0)}
+          geometry={() => <sphereGeometry args={[1, 64, 64]} />}
         />
 
         {/*---- add the simulation frag here ----*/}

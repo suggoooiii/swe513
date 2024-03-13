@@ -9,7 +9,7 @@ const numLng = 200;
 let numLinesCulled = 0;
 
 init();
-animate();
+// animate();
 
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
